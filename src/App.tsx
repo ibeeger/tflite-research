@@ -126,8 +126,8 @@ const App = () => {
     } else {
       navigator.mediaDevices
         .getUserMedia({ video: {
-          width: 400,
-          height: 300,
+          width: 640,
+          height: 480,
         } })
         .then(async (stream) => {
           webcamRunning = true;

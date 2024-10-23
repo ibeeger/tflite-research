@@ -58,5 +58,3 @@ EEO ClassIn (translations)*
 .gitmodules
 src/_components/
 
-Dockerfile
-*.conf
