@@ -15,8 +15,8 @@ root.render(
     <h1>Example</h1>
     <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Gen />} />
-          <Route path="hands" element={<Hands />} />
+          {/* <Route index element={<Gen />} /> */}
+          <Route index element={<Hands />} />
           <Route path="detectvideo" element={<DetectionVideo />} />
           <Route path="detection" element={<Detection />} />
           <Route path="seg" element={<App />} />
