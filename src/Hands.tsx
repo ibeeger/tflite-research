@@ -88,7 +88,7 @@ function Hands() {
 
   return (
     <>
-    <h4>Detect Gestures   {ready ? 'Load complete' : 'model loading'}</h4>
+    <h4>模型加载状态：  {ready ? 'Load complete' : 'model loading'}</h4>
     <div className='container'> 
     <video id="video" autoPlay loop muted></video>
     <canvas id="output"></canvas>
@@ -100,6 +100,7 @@ function Hands() {
         })
     })}
     <img  alt="" /><br /><br />
+    可检测类型："Closed_Fist", "Open_Palm", "Pointing_Up", "Thumb_Down", "Thumb_Up", "Victory", "ILoveYou"
     </>
   )
 }
