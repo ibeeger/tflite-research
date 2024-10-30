@@ -70,13 +70,8 @@ function renderLoop(): void {
         })
         document.getElementById('cs').innerHTML = hansStatus;
       }
-      // lastVideoTime = video.currentTime;
     });
-    // processResults(detections);
-    // console.log(detections);
-    // drawCanvas(detections['detections']);
   }
-
   requestAnimationFrame(renderLoop);
 }
  
