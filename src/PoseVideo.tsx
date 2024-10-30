@@ -61,12 +61,6 @@ function renderLoop(): void {
   if (video?.currentTime !== lastVideoTime) {
     lastVideoTime = video.currentTime;
     poseLandmarker?.detectForVideo(video, startTs, (result) =>{
-      //  console.log(result.landmarks[0][19], result.landmarks[0][20]);
-      //  console.log(result.worldLandmarks, result.landmarks[0][20]);
-      // renderLoop();
-      // console.log(document.getElementById('cs'));
-
-      // console.log('当前识别数量', result.landmarks?.length)
       if(result.landmarks?.length > 0){
         let hansStatus= '';
         result.landmarks.forEach((item: any, i: any) => {
@@ -87,21 +81,6 @@ function renderLoop(): void {
 }
  
 
-function clearCanvas() {
-  if(!running) return;
-  const canvas = document.getElementById('output') as HTMLCanvasElement;
-  const ctx = canvas.getContext('2d');
-  ctx?.clearRect(0, 0, canvas.width, canvas.height);
-}
-
-function drawCanvas(boundingBoxs: any) {
-  if(!running) return;
-  console.log(boundingBoxs); 
-
-  // if(boundingBoxs.length === 0) return;
-}
-
-
 function PoseVideo() {
   
   const [results, setResult] = React.useState([])
@@ -113,23 +92,12 @@ function PoseVideo() {
     creaetPoseMaker().then(() => {
       console.log("objectDetector", poseLandmarker)
       setReady(true);
-      navigator.mediaDevices.getUserMedia({ video: {
-        facingMode: 'environment',
-        width: 400,
-        height: 300
-      } }).then((stream) => {
-        streamItem = stream;
         const video = document.getElementById('video') as HTMLVideoElement;
-        const canvas = document.getElementById('output') as HTMLCanvasElement;
-        video.srcObject = stream;
         video.onloadedmetadata = () => {
           video.play();
-          canvas.width = video.videoWidth;
-          canvas.height = video.videoHeight;
           running = true;
           renderLoop();
         }
-      })
     })
     return () => {
       running = false;
@@ -149,14 +117,20 @@ function PoseVideo() {
     <h4>模型加载状态：  {ready ? 'Load complete' : 'model loading'}</h4>
     <div className='container'> 
     <video id="video" autoPlay loop muted style={{opacity: 1}}></video>
-    <canvas id="output"></canvas>
+    <input type='file' accept='video/*' id='file' onChange={(e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if(file){
+        const url = URL.createObjectURL(file);
+        const video = document.getElementById('video') as HTMLVideoElement;
+        video.src = url;
+      }
+    }} />
     </div>
     <pre id="cs" style={{
       display: 'block',
       width: '100%',
       height: '300px',
     }}>
-      
     </pre>
     </>
   )

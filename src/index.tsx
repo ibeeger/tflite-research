@@ -7,7 +7,8 @@ import Detection from "./Detection";
 import Hands from "./Hands";
 import DetectionVideo from "./DetectionVideo";
 import Gen from "./Gen";
-import PoseVideo from "./Pose";
+import PoseCam from "./Pose";
+import PoseVideo from "./PoseVideo";
 
 // Render your React component instead
 const root = createRoot(document.getElementById("root") as Element);
@@ -17,6 +18,7 @@ root.render(
         <Route path="/" element={<Layout />}>
           {/* <Route index element={<Gen />} /> */}
           <Route index element={<PoseVideo />} />
+          <Route path="posecam" element={<PoseCam />} />
           <Route path="hands" element={<Hands />} />
           <Route path="detectvideo" element={<DetectionVideo />} />
           <Route path="detection" element={<Detection />} />
@@ -39,7 +41,13 @@ function Layout() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/hands">手势</Link>
+            <Link to="/posevideo">举手检测（视频文件）</Link>
+          </li>
+          <li>
+            <Link to="/posecam">举手检测（摄像头）</Link>
+          </li>
+          <li>
+            <Link to="/hands">手势检测</Link>
           </li>
           <li>
             <Link to="/detectvideo">对象检测（实时）</Link>
