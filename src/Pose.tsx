@@ -61,12 +61,6 @@ function renderLoop(): void {
   if (video?.currentTime !== lastVideoTime) {
     lastVideoTime = video.currentTime;
     poseLandmarker?.detectForVideo(video, startTs, (result) =>{
-      //  console.log(result.landmarks[0][19], result.landmarks[0][20]);
-      //  console.log(result.worldLandmarks, result.landmarks[0][20]);
-      // renderLoop();
-      // console.log(document.getElementById('cs'));
-
-      // console.log('当前识别数量', result.landmarks?.length)
       if(result.landmarks?.length > 0){
         let hansStatus= '';
         result.landmarks.forEach((item: any, i: any) => {
