@@ -39,10 +39,10 @@ module.exports = () => {
       new CopyPlugin({
         patterns: [
           { from: './build/*.tflite', to: '[name].tflite' },
-          { from: './build/*.task', to: '[name].task' },
+          // { from: './build/*.task', to: '[name].task' },
           // { from: './build/*.bin', to: '[name].bin' },
-          { from: './build/*.jpg', to: '[name].jpg' },
-          {from: './build/*.js', to: '[name].js'},
+          // { from: './build/*.jpg', to: '[name].jpg' },
+          // {from: './build/*.js', to: '[name].js'},
           { from: './node_modules/@mediapipe/tasks-vision/wasm/*', to: 'wasm/[name][ext]' },
           { from: './node_modules/@mediapipe/tasks-text/wasm/*', to: 'wasm/[name][ext]' },
           { from: './node_modules/@mediapipe/tasks-genai/wasm/*', to: 'wasm/[name][ext]' },
